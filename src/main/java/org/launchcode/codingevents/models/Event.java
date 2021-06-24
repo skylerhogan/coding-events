@@ -1,12 +1,11 @@
 package org.launchcode.codingevents.models;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.*;
-import java.util.Objects;
 
-public class Event {
-    private int id;
-    private static int nextId = 1;
 
+@Entity
+public class Event extends AbstractEntity {
     @NotBlank(message = "Name is required.")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters.")
     private String name;
@@ -26,6 +25,8 @@ public class Event {
 
     private int numberOfAttendees;
 
+    private EventType type;
+
     public Event(String name, String description, String contactEmail, String location, Boolean registration, int numberOfAttendees) {
         this.name = name;
         this.description = description;
@@ -33,8 +34,6 @@ public class Event {
         this.location = location;
         this.registration = registration;
         this.numberOfAttendees = numberOfAttendees;
-        this.id = nextId;
-        nextId++;
     }
 
     public Event() {}
@@ -88,26 +87,17 @@ public class Event {
         this.numberOfAttendees = numberOfAttendees;
     }
 
+    @NotNull(message = "Event Type is required.")
+    public EventType getType() {
+        return type;
+    }
 
-    public int getId() {
-        return id;
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     @Override
     public String toString() {
         return name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Event event = (Event) o;
-        return id == event.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
     }
 }
