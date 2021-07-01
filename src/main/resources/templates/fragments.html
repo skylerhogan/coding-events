@@ -19,6 +19,7 @@
        <li class="nav-item"><a class="nav-link" href="/eventCategories/create">Create Category</a></li>
        <li class="nav-item"><a class="nav-link" href="/tags">All Tags</a></li>
        <li class="nav-item"><a class="nav-link" href="/tags/create">Create Tag</a></li>
+       <li th:unless="${#httpServletRequest.requestURI == '/login'}"><input type="button" onclick="window.location.href='/logout';" value="Logout" class="btn btn-danger"></li>
    </ul>
 </header>
 

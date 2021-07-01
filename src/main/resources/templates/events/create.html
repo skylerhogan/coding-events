@@ -35,15 +35,6 @@
       </label>
       <p class="error" th:errors="${event.eventCategory}"></p>
    </div>
-   <div class="form-group">
-      <label>Tags
-         <select th:field="${event.tags}">
-            <option th:each="tag : ${tags}" th:value="${tag.id}" th:text="${tag.name}">
-            </option>
-         </select>
-      </label>
-      <p class="error" th:errors="${event.eventCategory}"></p>
-   </div>
    <div class ="form-group">
    <input type="submit" value="Create" class="btn btn-primary">
    </div>
